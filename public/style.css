@@ -33,6 +33,7 @@ body, html {
   font-weight: 500;
 }
 
+/* Get Started Button with raised hover effect */
 .hero .button {
   background: black;
   color: white;
@@ -41,12 +42,14 @@ body, html {
   font-weight: 600;
   text-decoration: none;
   border-radius: 40px;
-  transition: 0.3s;
+  transition: 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* smooth transitions */
 }
 
 .hero .button:hover {
   background: white;
   color: black;
+  transform: scale(1.1); /* slightly bigger on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* gives raised effect */
 }
 
 /* Login Section */
