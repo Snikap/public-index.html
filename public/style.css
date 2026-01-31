@@ -11,7 +11,6 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth; /* smooth scrolling */
 }
 
 /* Hero Section */
@@ -42,14 +41,15 @@ body, html {
   font-weight: 600;
   text-decoration: none;
   border-radius: 40px;
-  transition: 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* smooth transitions */
+  transition: 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .hero .button:hover {
   background: white;
   color: black;
-  transform: scale(1.1); /* slightly bigger on hover */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* gives raised effect */
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Login Section */
@@ -64,8 +64,9 @@ body, html {
   background: linear-gradient(90deg, #6a7be7, #7b5fc0);
   color: white;
   padding: 40px 20px;
-  opacity: 0; /* initially hidden */
-  transform: translateY(50px); /* slide up effect */
+
+  opacity: 0;              /* Hidden initially */
+  transform: translateY(50px); /* Slide up */
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -77,7 +78,6 @@ body, html {
 .login-section h2 {
   font-size: 36px;
   margin-bottom: 30px;
-  color: white;
 }
 
 .login-form {
@@ -126,7 +126,7 @@ body, html {
 <!-- Hero Section -->
 <section class="hero">
   <p>Your Time, Our Priority</p>
-  <a href="#login" class="button" id="getStartedBtn">Get Started</a>
+  <a class="button" id="getStartedBtn">Get Started</a>
 </section>
 
 <!-- Login Section -->
@@ -139,17 +139,28 @@ body, html {
 </section>
 
 <script>
-// Smooth scroll + reveal login section on click
+// Smooth scroll + delayed reveal
 const getStartedBtn = document.getElementById('getStartedBtn');
 const loginSection = document.getElementById('login');
 
 getStartedBtn.addEventListener('click', function(e) {
-  e.preventDefault(); // prevent default anchor behavior
-  loginSection.classList.add('show'); // reveal section
-  loginSection.scrollIntoView({ behavior: 'smooth' }); // smooth scroll
+  e.preventDefault();
+
+  // Get vertical position of login section
+  const sectionTop = loginSection.offsetTop;
+
+  // Smooth scroll to login section
+  window.scrollTo({
+    top: sectionTop,
+    behavior: 'smooth'
+  });
+
+  // Add 'show' class after a short delay to allow scroll animation
+  setTimeout(() => {
+    loginSection.classList.add('show');
+  }, 200); // 200ms delay feels smooth
 });
 </script>
 
 </body>
 </html>
-
