@@ -11,7 +11,7 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* smooth scrolling */
 }
 
 /* Hero Section */
@@ -64,6 +64,14 @@ body, html {
   background: linear-gradient(90deg, #6a7be7, #7b5fc0);
   color: white;
   padding: 40px 20px;
+  opacity: 0; /* initially hidden */
+  transform: translateY(50px); /* slide up effect */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.login-section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .login-section h2 {
@@ -118,7 +126,7 @@ body, html {
 <!-- Hero Section -->
 <section class="hero">
   <p>Your Time, Our Priority</p>
-  <a href="#login" class="button">Get Started</a>
+  <a href="#login" class="button" id="getStartedBtn">Get Started</a>
 </section>
 
 <!-- Login Section -->
@@ -129,6 +137,18 @@ body, html {
     <button type="submit">Submit</button>
   </form>
 </section>
+
+<script>
+// Smooth scroll + reveal login section on click
+const getStartedBtn = document.getElementById('getStartedBtn');
+const loginSection = document.getElementById('login');
+
+getStartedBtn.addEventListener('click', function(e) {
+  e.preventDefault(); // prevent default anchor behavior
+  loginSection.classList.add('show'); // reveal section
+  loginSection.scrollIntoView({ behavior: 'smooth' }); // smooth scroll
+});
+</script>
 
 </body>
 </html>
