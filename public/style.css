@@ -40,11 +40,16 @@ p {
   color: black;
   transition: 0.3s ease;
 }
-.login-section {
-  margin-top: 200px;
-  padding: 100px 20px;
-  background: #111827;
+
+.login-section margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(90deg, #6a7be7, #7b5fc0);
+  color: white;
   text-align: center;
+}
+
+section {
+  min-height: 100vh;
 }
 
 .login-section h2 {
